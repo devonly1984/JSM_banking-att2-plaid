@@ -1,4 +1,5 @@
-import { LeftSidebar, MobileNavBar } from "@/components";
+import LeftSidebar from "@/components/LeftSidebar";
+import MobileNavBar from "@/components/MobileNavBar";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
