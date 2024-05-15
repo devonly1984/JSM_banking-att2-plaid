@@ -1,17 +1,17 @@
-import LeftSidebar from "@/components/LeftSidebar";
-import MobileNavBar from "@/components/MobileNavBar";
+import { LeftSidebar, MobileNavBar } from "@/components";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
-import { ReactNode } from "react"
+import { redirect } from "next/navigation";
+import { ReactNode } from "react";
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) => {
-  const loggedIn = {
-    firstName: "Bill",
-    lastName: 'White'
-  }
+  const loggedIn = await getLoggedInUser();
+  console.log("Logged In User", loggedIn);
+  if (!loggedIn) redirect("/sign-in");
   return (
     <main className="flex h-screen w-full font-inter">
       <LeftSidebar user={loggedIn} />
@@ -30,4 +30,4 @@ const RootLayout = ({
   );
 };
 
-export default RootLayout
+export default RootLayout;
