@@ -71,7 +71,7 @@ export function formatAmount(amount: number): string {
     currency: "USD",
     minimumFractionDigits: 2,
   });
-
+ 
   return formatter.format(amount);
 }
 
